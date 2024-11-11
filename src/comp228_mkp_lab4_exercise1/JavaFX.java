@@ -26,17 +26,20 @@ public class JavaFX extends Application{
 		primaryStage.setTitle("COMP-228 Lab4 JavaFX - Minh Khoi Phan");
 		// Create the root container - Flow Pane
 		BorderPane rootBP = createRootBorderPane();
-		// Create the top container - HBox
+		// Create containers
 		HBox topContainer = createHBox();
 		GridPane leftContainer = createGridPane();
 		VBox midContainer = createActivityVBox();
 		FlowPane rightContainer = createProgramFlowPane();
+		FlowPane bottomContainer = createDisplayFlowPane();
 		// Populate content
 		rootBP.setTop(topContainer);
 		rootBP.setLeft(leftContainer);
 		rootBP.setCenter(midContainer);
 		rootBP.setRight(rightContainer);
+		rootBP.setBottom(bottomContainer);
 		BorderPane.setMargin(rightContainer, new Insets(0,100,0,0));
+		BorderPane.setMargin(bottomContainer, new Insets(-240,0,0,0));
 		// Create a scene
 		Scene scene = new Scene(rootBP, 1000, 600);
 		// Set scene
@@ -112,6 +115,7 @@ public class JavaFX extends Application{
 		gpane.add(tfEmail, 1, 6);
 		return gpane;
 	}
+	// Center container function
 	private VBox createActivityVBox() {
 		//Instantiate a tilePane
 		VBox vb = new VBox();
@@ -131,6 +135,7 @@ public class JavaFX extends Application{
 		}
 		return vb;
 	}
+	// Right container function
 	private FlowPane createProgramFlowPane() {
 		//Instantiate a FlowPane
 		FlowPane fp = new FlowPane(Orientation.VERTICAL);
@@ -160,6 +165,21 @@ public class JavaFX extends Application{
 		listView.setMaxWidth(180);
 		listView.getItems().add("Your selected course:");
 		fp.getChildren().addAll(title,hp,cb,listView);
+		return fp;
+	}
+	// Bottom container function
+	private FlowPane createDisplayFlowPane() {
+		//Instantiate a FlowPane
+		FlowPane fp = new FlowPane(Orientation.VERTICAL);
+		//Set properties
+		fp.setAlignment(Pos.CENTER);
+		fp.setPadding(new Insets(5,10,5,10));
+		fp.setVgap(10);
+		//Add display button
+		Button btnDisplay = new Button("Display");
+		//Add text area
+		TextArea txtArea = new TextArea("Your information");
+		fp.getChildren().addAll(btnDisplay,txtArea);
 		return fp;
 	}
 }
