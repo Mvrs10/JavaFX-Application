@@ -10,16 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.geometry.*;
 import javafx.scene.text.FontWeight;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class JavaFX extends Application{
 	// Override the start method of the Application class
@@ -32,9 +28,11 @@ public class JavaFX extends Application{
 		// Create the top container - HBox
 		HBox topContainer = createHBox();
 		GridPane leftContainer = createGridPane();
+		VBox midContainer = createActivityVBox();
 		// Populate content
 		rootBP.setTop(topContainer);
 		rootBP.setLeft(leftContainer);
+		rootBP.setCenter(midContainer);
 		// Create a scene
 		Scene scene = new Scene(rootBP, 1000, 600);
 		// Set scene
@@ -109,5 +107,24 @@ public class JavaFX extends Application{
 		gpane.add(lbEmail, 0, 6);
 		gpane.add(tfEmail, 1, 6);
 		return gpane;
+	}
+	private VBox createActivityVBox() {
+		//Instantiate a tilePane
+		VBox vb = new VBox();
+		//Set properties
+		vb.setPadding(new Insets(5,10,5,10));
+		vb.setSpacing(20);
+		//Add title
+		Label title = new Label("Choose your college activities:");
+		title.setFont(Font.font(14));
+		vb.getChildren().add(title);
+		//Add check box
+		String str[] = { "Student Council", "Sports Club", "Volunteer Work", "Library Service"};
+		for (int i=0; i<str.length; i++) {
+			CheckBox cb = new CheckBox(str[i]);
+			vb.getChildren().add(cb);
+			cb.setIndeterminate(false);
+		}
+		return vb;
 	}
 }
