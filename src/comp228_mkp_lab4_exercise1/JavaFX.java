@@ -5,6 +5,7 @@ package comp228_mkp_lab4_exercise1;
  * @implNote Lab #4 Using JavaFX
  */
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Group;
@@ -29,10 +30,13 @@ public class JavaFX extends Application{
 		HBox topContainer = createHBox();
 		GridPane leftContainer = createGridPane();
 		VBox midContainer = createActivityVBox();
+		FlowPane rightContainer = createProgramFlowPane();
 		// Populate content
 		rootBP.setTop(topContainer);
 		rootBP.setLeft(leftContainer);
 		rootBP.setCenter(midContainer);
+		rootBP.setRight(rightContainer);
+		BorderPane.setMargin(rightContainer, new Insets(0,100,0,0));
 		// Create a scene
 		Scene scene = new Scene(rootBP, 1000, 600);
 		// Set scene
@@ -126,5 +130,36 @@ public class JavaFX extends Application{
 			cb.setIndeterminate(false);
 		}
 		return vb;
+	}
+	private FlowPane createProgramFlowPane() {
+		//Instantiate a FlowPane
+		FlowPane fp = new FlowPane(Orientation.VERTICAL);
+		//Set properties
+		fp.setAlignment(Pos.BASELINE_LEFT);
+		fp.setPadding(new Insets(5,10,5,10));
+		fp.setVgap(5);
+		//Add title
+		Label title = new Label("Choose your program:");
+		title.setFont(Font.font(14));
+		//Add radio buttons
+		HBox hp = new HBox();
+		hp.setSpacing(30);
+		ToggleGroup programGroup = new ToggleGroup();
+		RadioButton program1 = new RadioButton("Computer Science");
+		RadioButton program2 = new RadioButton("Business");
+		program1.setToggleGroup(programGroup);
+		program2.setToggleGroup(programGroup);
+		hp.getChildren().addAll(program1,program2);
+		//Add combo box
+		String csCourses[]= { "Python" , "C#", "Java" };
+		String businessCourses[]= { "Accounting", "Finance", "Risk Management" };
+		ComboBox<String> cb = new ComboBox<String>(FXCollections.observableArrayList(csCourses));
+		//Add list view
+		ListView<String> listView = new ListView<String>();
+		listView.setMaxHeight(150);
+		listView.setMaxWidth(180);
+		listView.getItems().add("Your selected course:");
+		fp.getChildren().addAll(title,hp,cb,listView);
+		return fp;
 	}
 }
