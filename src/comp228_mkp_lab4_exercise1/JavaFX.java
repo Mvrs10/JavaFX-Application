@@ -17,6 +17,7 @@ import javafx.geometry.*;
 import javafx.scene.text.FontWeight;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.beans.value.*;
 
 public class JavaFX extends Application{
 	// Override the start method of the Application class
@@ -113,7 +114,19 @@ public class JavaFX extends Application{
 		//Add combo box
 		String csCourses[]= { "Python" , "C#", "Java" };
 		String businessCourses[]= { "Accounting", "Finance", "Risk Management" };
-		ComboBox<String> cb = new ComboBox<String>(FXCollections.observableArrayList(csCourses));
+		ComboBox<String> cb = new ComboBox<String>();
+		//RADIO BUTTONS FUNCTIONALITY - CHANGE EVENT LISTENER
+		programGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+			public void changed(ObservableValue<? extends Toggle> ob, Toggle o, Toggle n) {
+				RadioButton rb = (RadioButton)programGroup.getSelectedToggle();
+				if(rb!=null && rb.getText() == "Computer Science") {
+					cb.setItems(FXCollections.observableArrayList(csCourses));
+				}
+				else if(rb!=null && rb.getText() == "Business") {
+					cb.setItems(FXCollections.observableArrayList(businessCourses));
+				}
+			}
+		});
 		//Add list view
 		ListView<String> listView = new ListView<String>();
 		listView.setMaxHeight(150);
@@ -131,7 +144,7 @@ public class JavaFX extends Application{
 		Button btnDisplay = new Button("Display");
 		//Add text area
 		TextArea txtArea = new TextArea("Your information");
-		bottomContainer.getChildren().addAll(btnDisplay,txtArea);
+		bottomContainer.getChildren().addAll(btnDisplay,txtArea);	
 		// Populate content
 		rootBP.setTop(topContainer);
 		rootBP.setLeft(leftContainer);
