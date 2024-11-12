@@ -1,9 +1,13 @@
 package comp228_mkp_lab4_exercise1;
+
+
 /**
  * @author Minh Khoi Phan-301278135
  * @since 2024-11-4
  * @implNote Lab #4 Using JavaFX
  */
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.stage.Stage;
@@ -87,8 +91,10 @@ public class JavaFX extends Application{
 		midContainer.getChildren().add(title);
 		//Add check box
 		String str[] = { "Student Council", "Sports Club", "Volunteer Work", "Library Service"};
+		CheckBox checkList[] = new CheckBox[4];
 		for (int i=0; i<str.length; i++) {
 			CheckBox cb = new CheckBox(str[i]);
+			checkList[i] = cb;
 			midContainer.getChildren().add(cb);
 			cb.setIndeterminate(false);
 		}
@@ -151,14 +157,43 @@ public class JavaFX extends Application{
 		//Instantiate a FlowPane
 		FlowPane bottomContainer = new FlowPane(Orientation.VERTICAL);
 		//Set properties
+		bottomContainer.setPrefHeight(250);
 		bottomContainer.setAlignment(Pos.CENTER);
 		bottomContainer.setPadding(new Insets(5,10,5,10));
 		bottomContainer.setVgap(10);
 		//Add display button
 		Button btnDisplay = new Button("Display");
 		//Add text area
-		TextArea txtArea = new TextArea("Your information");
-		bottomContainer.getChildren().addAll(btnDisplay,txtArea);	
+		TextArea txtArea = new TextArea();
+		bottomContainer.getChildren().addAll(btnDisplay,txtArea);
+		//DISPLAY BUTTON FUNCTIONALITY - EVENT HANDLER
+		//Create the action event
+		EventHandler<ActionEvent> displayEvent = new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e)
+			{
+				//RETRIEVE THE TEXT
+				String name = tfName.getText();
+				String address = tfAddress.getText();
+				String province = tfProvince.getText();
+				String city = tfCity.getText();
+				String postalCode = tfPostalCode.getText();
+				String phoneNumber = tfPhoneNumber.getText();
+				String email = tfEmail.getText();
+				List<String> courseList = listView.getItems();
+				String courseString = String.join("\n", courseList);
+				String infoString = String.join(", ", name,address,province,city,postalCode,phoneNumber,email);
+				List<String> checkedActivity = new ArrayList<String>();
+				for (int i = 0; i<checkList.length; i++) {
+					if(checkList[i].isSelected()) {
+						System.out.println("Yes");
+						checkedActivity.add(checkList[i].getText());
+					}
+				}
+				txtArea.setText("Your information: "+infoString+"\n"+courseString+"\nYour activities:\n"+checkedActivity);
+			}
+		};
+		//Set the action
+		btnDisplay.setOnAction(displayEvent);
 		// Populate content
 		rootBP.setTop(topContainer);
 		rootBP.setLeft(leftContainer);
