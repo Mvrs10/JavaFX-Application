@@ -115,10 +115,17 @@ public class JavaFX extends Application{
 		String csCourses[]= { "Python" , "C#", "Java" };
 		String businessCourses[]= { "Accounting", "Finance", "Risk Management" };
 		ComboBox<String> cb = new ComboBox<String>();
+		//Add list view
+		ListView<String> listView = new ListView<String>();
+		listView.setMaxHeight(150);
+		listView.setMaxWidth(180);
+		listView.getItems().add("Your selected course:");
 		//RADIO BUTTONS FUNCTIONALITY - CHANGE EVENT LISTENER
 		programGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 			public void changed(ObservableValue<? extends Toggle> ob, Toggle o, Toggle n) {
 				RadioButton rb = (RadioButton)programGroup.getSelectedToggle();
+				listView.getItems().clear();
+				listView.getItems().add("Your selected course:");
 				if(rb!=null && rb.getText() == "Computer Science") {
 					cb.setItems(FXCollections.observableArrayList(csCourses));
 				}
@@ -127,11 +134,18 @@ public class JavaFX extends Application{
 				}
 			}
 		});
-		//Add list view
-		ListView<String> listView = new ListView<String>();
-		listView.setMaxHeight(150);
-		listView.setMaxWidth(180);
-		listView.getItems().add("Your selected course:");
+		//COMBO BOX FUNCTIONALITY - EVENT HANDLER
+		//Create the action event
+		EventHandler<ActionEvent> clickEvent = new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e)
+			{
+				if(listView.getItems().size()<4) {
+					listView.getItems().add(cb.getValue());
+				}
+			}
+		};
+		//Set the action
+		cb.setOnAction(clickEvent);
 		rightContainer.getChildren().addAll(programTitle,hp,cb,listView);
 		// BOTTOM CONTAINER
 		//Instantiate a FlowPane
