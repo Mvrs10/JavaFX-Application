@@ -24,20 +24,20 @@ Project is a JavaFX Form Application:
 
 <p align="center">
 Fill in the textfields: <br/>
-<img src="https://imgur.com/nOqNSvV" height="80%" width="80%" alt="JavaFX"/>
+<img src="https://i.imgur.com/nOqNSvV.png" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 Choose a program:  <br/>
-<img src="https://imgur.com/rFsplcr" height="80%" width="80%" alt="JavaFX"/>
-<img src="https://imgur.com/fn0plCJ" height="80%" width="80%" alt="JavaFX"/>
+<img src="https://i.imgur.com/rFsplcr.png" height="80%" width="80%" alt="JavaFX"/>
+<img src="https://i.imgur.com/fn0plCJ.png" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 Select a course: <br/>
-<img src="https://imgur.com/0nsNgM7" height="80%" width="80%" alt="JavaFX"/>
+<img src="https://i.imgur.com/0nsNgM7.png" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 Display:  <br/>
-<img src="https://imgur.com/XVTEsfy" height="80%" width="80%" alt="JavaFX"/>
+<img src="https://i.imgur.com/XVTEsfy.png" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 </p>
