@@ -1,6 +1,5 @@
 <h1>JavaFX Application Form</h1>
 
- ### 🏫 [Demo Image](https://imgur.com/fMYMPKe)
  ### 🏫 [Demo Video](https://drive.google.com/file/d/1UZG3TJQPM2aaHS-iYVs1riF0fCXPBQg9/view?usp=sharing)
 
 <h2>Description</h2>
@@ -25,21 +24,20 @@ Project is a JavaFX Form Application:
 
 <p align="center">
 Fill in the textfields: <br/>
-<img src="https://i.imgur.com/Pk8DIpl.png" height="80%" width="80%" alt="Task Management System"/>
-<img src="https://i.imgur.com/0v7DmZj.png" height="80%" width="80%" alt="Task Management System"/>
+<img src="https://imgur.com/nOqNSvV" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 Choose a program:  <br/>
-<img src="https://i.imgur.com/LnHguS6.png" height="80%" width="80%" alt="Task Management System"/>
+<img src="https://imgur.com/rFsplcr" height="80%" width="80%" alt="JavaFX"/>
+<img src="https://imgur.com/fn0plCJ" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 Select a course: <br/>
-<img src="https://i.imgur.com/HyP6jzS.png" height="80%" width="80%" alt="Task Management System"/>
-<img src="https://i.imgur.com/dwX0wcq.png" height="80%" width="80%" alt="Task Management System"/>
+<img src="https://imgur.com/0nsNgM7" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 Display:  <br/>
-<img src="https://i.imgur.com/k52U6lm.png" height="80%" width="80%" alt="Task Management System"/>
+<img src="https://imgur.com/XVTEsfy" height="80%" width="80%" alt="JavaFX"/>
 <br />
 <br />
 </p>
